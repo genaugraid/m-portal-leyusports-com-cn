@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>od体育 · 简明使用指南与提示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fde9da 0%, #fad2b3 70%, #f8c69e 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 1.5rem 1rem 3rem;
+        }
+
+        .page-card {
+            max-width: 820px;
+            width: 100%;
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 42px;
+            box-shadow: 0 12px 30px rgba(180, 100, 40, 0.16), 0 4px 10px rgba(0,0,0,0.03);
+            padding: 2.2rem 2rem 2.8rem;
+            transition: box-shadow 0.2s;
+        }
+
+        /* hero 区域 */
+        .hero {
+            text-align: center;
+            padding: 1rem 0 1.6rem;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #5c2e1a;
+            background: linear-gradient(135deg, #7a3d1e, #a15f36);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #784b2c;
+            background: #f5e0cfb3;
+            display: inline-block;
+            padding: 0.25rem 1.2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(3px);
+            margin-top: 0.1rem;
+            font-weight: 450;
+        }
+
+        /* 快速指南区域 —— 代替传统优势区 */
+        .guide-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.6rem 2rem;
+            margin: 2rem 0 1.8rem;
+            justify-content: center;
+        }
+        .guide-item {
+            flex: 1 1 200px;
+            min-width: 160px;
+            background: #fcf2e9;
+            padding: 1.6rem 1.2rem 1.2rem;
+            border-radius: 28px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(150, 80, 30, 0.06);
+            transition: transform 0.15s, background 0.2s;
+        }
+        .guide-item:hover {
+            background: #fae7db;
+            transform: translateY(-3px);
+        }
+        .guide-item .icon {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .guide-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #422918;
+            margin-bottom: 0.3rem;
+        }
+        .guide-item p {
+            font-size: 0.9rem;
+            color: #5c3e2b;
+            line-height: 1.45;
+        }
+
+        /* 说明区 —— 宽卡片 */
+        .explain-block {
+            background: #fef6ef;
+            border-radius: 30px;
+            padding: 1.6rem 1.8rem 1.8rem;
+            margin: 1.4rem 0 1.8rem;
+            border-left: 5px solid #bc7b4c;
+        }
+        .explain-block h2 {
+            font-size: 1.45rem;
+            font-weight: 550;
+            color: #4e2e19;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+        .explain-block p {
+            color: #3f281b;
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+        .explain-block strong {
+            color: #7b4a2a;
+        }
+
+        /* 场景 / 提醒 */
+        .reminder-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.4rem;
+            margin: 1.8rem 0 1.4rem;
+        }
+        .reminder-card {
+            flex: 1 1 180px;
+            background: #fffaf4;
+            border-radius: 24px;
+            padding: 1.2rem 1rem 1.1rem;
+            border: 1px solid #ebd7c8;
+            box-shadow: 0 2px 6px #e7cfbc33;
+        }
+        .reminder-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #572f19;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.4rem;
+        }
+        .reminder-card p {
+            font-size: 0.9rem;
+            color: #4a3324;
+            line-height: 1.5;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            background: #fcf1e6;
+            border-radius: 28px;
+            padding: 1.5rem 1.6rem 1.6rem;
+            margin: 1.8rem 0 1.6rem;
+        }
+        .faq-summary h3 {
+            font-size: 1.2rem;
+            font-weight: 550;
+            color: #4a2b18;
+            margin-bottom: 0.8rem;
+            border-bottom: 2px dashed #d6b49d;
+            padding-bottom: 0.4rem;
+        }
+        .faq-item {
+            display: flex;
+            flex-direction: column;
+            margin: 0.7rem 0;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #572f19;
+        }
+        .faq-item .a {
+            color: #3d2b1e;
+            margin-left: 0.2rem;
+            font-size: 0.94rem;
+            line-height: 1.5;
+        }
+
+        /* 底部链接区 */
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.6rem;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e9d3c1;
+            font-size: 0.95rem;
+        }
+        .footer-links a {
+            color: #7b4a2a;
+            text-decoration: none;
+            background: #f7e8db;
+            padding: 0.3rem 1.4rem;
+            border-radius: 60px;
+            font-weight: 500;
+            transition: background 0.2s, box-shadow 0.1s;
+            box-shadow: 0 1px 4px rgba(130, 70, 30, 0.08);
+        }
+        .footer-links a:hover {
+            background: #edd6c2;
+            box-shadow: 0 2px 8px rgba(150, 80, 30, 0.15);
+        }
+        .footer-note {
+            color: #644d39;
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 500px) {
+            .page-card { padding: 1.5rem 1rem 2rem; }
+            .hero h1 { font-size: 2rem; }
+            .guide-item { min-width: 140px; }
+            .reminder-card { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-card">
+
+    <!-- hero 区 -->
+    <div class="hero">
+        <h1>od体育 · 简明指南</h1>
+        <span class="sub">访问提醒 · 实用说明</span>
+    </div>
+
+    <!-- 快速指南（类似优势区） -->
+    <div class="guide-grid">
+        <div class="guide-item">
+            <span class="icon">🧭</span>
+            <h3>直达平台</h3>
+            <p>通过下方链接可直接进入 <strong>od体育</strong>，无需绕路。</p>
+        </div>
+        <div class="guide-item">
+            <span class="icon">🔐</span>
+            <h3>访问环境</h3>
+            <p>建议使用稳定网络，部分区域可能需调整网络设置。</p>
+        </div>
+        <div class="guide-item">
+            <span class="icon">📱</span>
+            <h3>多终端适配</h3>
+            <p>移动端与桌面端均可流畅使用，保持更新更佳。</p>
+        </div>
+    </div>
+
+    <!-- 说明区：从访问角度切入 -->
+    <div class="explain-block">
+        <h2>关于 od体育 的访问与使用</h2>
+        <p>如果你正在寻找一个直观、功能集中的体育互动平台，<a href="https://apps-odsports.com" style="color:#8b5533; text-decoration:underline; font-weight:500;">od体育</a> 是一个值得了解的选择。本页面整理了一些基础提醒和特点，帮助你更快熟悉。平台提供的服务围绕体育赛事数据、实时信息及社区互动展开，界面设计偏向简洁实用。</p>
+        <p style="margin-top: 0.8rem;"><strong>• 初次使用：</strong> 建议先浏览主要板块，了解栏目结构。平台没有复杂的强制流程，注册后即可探索大部分内容。<br>
+        <strong>• 网络提示：</strong> 由于服务部署在境外，访问时若遇到延迟，可尝试更换网络环境或使用合适的连接方式。<br>
+        <strong>• 账号安全：</strong> 像对待任何线上服务一样，请使用独立密码，并避免在公共设备上保持登录状态。</p>
+    </div>
+
+    <!-- 场景 / 提醒卡片 -->
+    <div class="reminder-cards">
+        <div class="reminder-card">
+            <h4>📌 内容刷新</h4>
+            <p>数据与赛事列表会动态更新，建议定期刷新页面或开启通知（如可用）获取最新动态。</p>
+        </div>
+        <div class="reminder-card">
+            <h4>⚙️ 界面语言</h4>
+            <p>平台主要使用中文界面，关键按钮与提示均为简体中文，降低理解门槛。</p>
+        </div>
+        <div class="reminder-card">
+            <h4>🔄 版本迭代</h4>
+            <p>od体育 会不定期优化功能，若发现界面微调或新增模块，属于正常更新。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+        <h3>❓ 常见疑问摘要</h3>
+        <div class="faq-item">
+            <span class="q">Q：是否需要付费才能使用 od体育？</span>
+            <span class="a">基础浏览和部分功能免费开放，具体增值服务以平台实际说明为准。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">Q：遇到打不开或加载慢怎么办？</span>
+            <span class="a">先检查本地网络，尝试切换Wi-Fi/移动数据；若持续异常，可能是区域性限制，可更换网络环境后重试。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">Q：如何反馈问题或建议？</span>
+            <span class="a">通常平台内设有客服入口或联系表单，也可通过社交渠道寻找官方账号。</span>
+        </div>
+        <div style="margin-top:0.6rem; font-size:0.9rem; color:#5d3f2b;">更多细节建议直接参考平台内帮助或公告。</div>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="footer-links">
+        <a href="https://apps-odsports.com">od体育</a>
+        <span style="color:#7d5c46;">·</span>
+        <span style="color:#5d3f2b; background:transparent; padding:0; box-shadow:none;">使用前请确认当地法规</span>
+        <div class="footer-note">—— 信息整理于公开资料，仅供参考 ——</div>
+    </div>
+
+</div>
+</body>
+</html>
